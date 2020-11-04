@@ -56,7 +56,7 @@ const fetchSomeReview = useCallback(async e=> {
 const userId = e => {
   // const revId = e.target.getAttribute('rev-id')
   // console.log(revId)
-  localStorage.setItem("user_id", 8932678);
+  localStorage.setItem("user_id", 'jason');
   // alert()
 }
   return (
@@ -65,9 +65,11 @@ const userId = e => {
       <div>
       <input type="text" id='revTitle' placeholder ="Type Movie"/> 
             <button onClick={fetchSomeReview}>Search</button>
-            <Link className ="myList" color="primary" href="http://localhost:3000/myreviewlist" onClick={userId}>
+
+            <Link className ="myList" color="primary" href="/my-review" onClick={userId}>
             나의 리뷰 모음
             </Link>
+
             </div>      
       <Table size="small" className = "tbsize">
         <TableHead>

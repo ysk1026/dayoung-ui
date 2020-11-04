@@ -56,10 +56,10 @@ export default function RecentList() {
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link className = "writereview" color="primary" to ="/write-review">
+        <Link className = "writereview" color="primary" href ="/write-review">
           리뷰 작성
         </Link>
-        <Link className = "writereview" color="primary" to ="/reviewlist">
+        <Link className = "writereview" color="primary" href="/review-list">
           전체 리뷰 보기
         </Link>
       </div>

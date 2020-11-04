@@ -86,7 +86,7 @@ const revid = e => {
                 <TableCell>F</TableCell>
                 <TableCell align="right">
                     <button>
-                        <Link href="/editreview" rev-id={i.rev_id} onClick={revid}>
+                        <Link href="/edit-review" rev-id={i.rev_id} onClick={revid}>
                             EDIT
                         </Link>
                     </button>

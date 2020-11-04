@@ -9,6 +9,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path ='/' component={Main}/>
+        <Route path ='/review-list' component={ReviewList}/>
+        <Route path ='/my-review' component={MyReview}/>
+        <Route path ='/write-review' component={ReviewWrite}/>
+        <Route path ='/edit-review' component={ReviewEdit}/>
       </Switch>
     </Router>
 
