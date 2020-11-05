@@ -35,7 +35,7 @@ export default function EntireList() {
 
 const fetchSomeReview = useCallback(async e=> {
   alert("진입")
-  const title = document.querySelector('#revTitle').value
+  const title = document.querySelector('#movieTitle').value
   alert(title)
   try {
       const req = {
@@ -63,7 +63,7 @@ const userId = e => {
     <React.Fragment>
       <Title>Reviews</Title>
       <div>
-      <input type="text" id='revTitle' placeholder ="Type Movie"/> 
+      <input type="text" id='movieTitle' placeholder ="Type Movie"/> 
             <button onClick={fetchSomeReview}>Search</button>
 
             <Link className ="myList" color="primary" to="/my-review" onClick={userId}>

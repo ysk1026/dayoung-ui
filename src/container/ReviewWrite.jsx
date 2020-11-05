@@ -74,9 +74,9 @@ export default function ReviewWrite() {
   const fetchMovie = useCallback(async e=> {
     const movieDiv = document.querySelector('.movie_img')
     // movieDiv.style.display = "Block"
-    alert("진입")
+    // alert("진입")
     const title = document.querySelector('#movTitle').value
-    alert(title)
+    // alert(title)
     try {
         const req = {
             method: c.get,
@@ -118,14 +118,14 @@ export default function ReviewWrite() {
               <input type="text" id='movTitle' placeholder ="Type Movie"/> 
             <button onClick={fetchMovie}>Search</button>
         </div>
-        <div class="movie_img" style={{display: 'None'}}>
-          <table>
+        <div class="movie_img" style={{display: 'None', marginTop: 20, width: '100%'}}>
+          <table style={{width: '100%'}}>
             {/* <tr>
               <td>{data['title_kor']}</td>
             </tr> */}
             <tr>
-              <td>
-                <img className={classes.poster} src={movimg} alt="img"/>
+              <td align="center">
+                <img className={classes.poster} src={movimg} style={{width: '40%'}} alt="img"/>
                 </td>
             </tr>
           </table>
