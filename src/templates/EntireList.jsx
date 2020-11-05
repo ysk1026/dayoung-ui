@@ -78,6 +78,7 @@ const userId = e => {
             <TableCell>ID</TableCell>
             <TableCell>영화</TableCell>
             <TableCell>리뷰 제목</TableCell>
+            <TableCell>리뷰 내용</TableCell>
             <TableCell>별점</TableCell>
 
           </TableRow>
@@ -88,7 +89,8 @@ const userId = e => {
               <TableCell>{i.user_id}</TableCell>
               <TableCell>{i.movie_id}</TableCell>
               <TableCell>{i.title}</TableCell>
-              <TableCell>F</TableCell>
+              <TableCell>{i.content}</TableCell>
+              <TableCell>*</TableCell>
             </TableRow>
           ))}
         </TableBody>

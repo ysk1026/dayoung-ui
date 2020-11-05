@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useCallback} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import {SearchAppBar} from '../templates'
 import {useHistory} from 'react-router-dom'
+import {context as c} from '../context'
 
 
 function Copyright() {
@@ -50,11 +51,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ReviewWrite() {
-
-  const [movieId, setMovieId] = useState('')
+  const [data, setData] = useState([])
+  // const [movieId, setMovieId] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const history = useHistory()
+  const movieId = data['movieid']
   const write = () => {
     alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
     axios.post(`http://127.0.0.1:8080/api/reviewpost`,{'title':title, 'content': content, 'movie_id': movieId})
@@ -69,23 +71,32 @@ export default function ReviewWrite() {
 
 }
 
-  const options = [
-    {
-        label: "Select Movie",
-        value: "0",
-      },
-    {
-      label: "Tenet",
-      value: "1",
-    },
-    {
-      label: "TV Show",
-      value: "2",
-    },
-  ];
+  const fetchMovie = useCallback(async e=> {
+    const movieDiv = document.querySelector('.movie_img')
+    // movieDiv.style.display = "Block"
+    alert("진입")
+    const title = document.querySelector('#movTitle').value
+    alert(title)
+    try {
+        const req = {
+            method: c.get,
+            url: `${c.url}/api/moviesearch${title}`,
+            // data: {params: title},
+            auth: c.auth
 
+        }
+        const res = await axios(req)
+          // alert(res.data[0])
+          setData(res.data[0])
+          movieDiv.style.display = "Block"
+    } catch (error){
+        // alert(`fetchSomeReviews failure ${error}`)
+        alert(`목록에 없는 영화입니다.`)
+    }
+    
+  },[])
   const classes = useStyles();
-
+  const movimg = data['image_naver']
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -100,13 +111,24 @@ export default function ReviewWrite() {
           리뷰를 작성해주세요
         </Typography>
         <div class="mb-3" style={{margin: '26px 0 0 0'}}>
-                            <select value={movieId}
+                            {/* <select value={movieId}
                                     style={{width: '250px', height: '60px'}} 
                                     onChange={e=>setMovieId(e.target.value)}>
-                                {options.map(o=>(
-                                    <option value={o.value}>{o.label}</option>
-                                ))}
-                            </select>
+                            </select> */}
+              <input type="text" id='movTitle' placeholder ="Type Movie"/> 
+            <button onClick={fetchMovie}>Search</button>
+        </div>
+        <div class="movie_img" style={{display: 'None'}}>
+          <table>
+            {/* <tr>
+              <td>{data['title_kor']}</td>
+            </tr> */}
+            <tr>
+              <td>
+                <img className={classes.poster} src={movimg} alt="img"/>
+                </td>
+            </tr>
+          </table>
         </div>
         <form className={classes.form} noValidate>
           <TextField
