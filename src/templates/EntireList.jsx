@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -66,7 +66,7 @@ const userId = e => {
       <input type="text" id='revTitle' placeholder ="Type Movie"/> 
             <button onClick={fetchSomeReview}>Search</button>
 
-            <Link className ="myList" color="primary" href="/my-review" onClick={userId}>
+            <Link className ="myList" color="primary" to="/my-review" onClick={userId}>
             나의 리뷰 모음
             </Link>
 
@@ -94,7 +94,7 @@ const userId = e => {
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link className = "writereview" color="primary" href="/write-review">
+        <Link className = "writereview" color="primary" to="/write-review">
           리뷰 작성
         </Link>
       </div>

@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
@@ -140,7 +140,7 @@ const del = () => {
                            {/* SAVE <Link href="review-list" class="btn btn-sm btn-primary" id="btnSave" onClick={modify}>Save</Link> */}
                   {/* </Button> */}
                   <button type="button">
-                            <Link to="review" class="btn btn-sm btn-primary" id="btnSave" onClick={modify}>Save</Link>
+                            <Link to="/review-list" class="btn btn-sm btn-primary" id="btnSave" onClick={modify}>Save</Link>
                         </button>
                   </div>
         <div style={{display: 'inline-block', margin: '0 40px'}}>
@@ -156,7 +156,7 @@ const del = () => {
             {/* Delete
           </Button> */}
                                   <button type="button">
-                            <Link to="review" class="btn btn-sm btn-primary" id="btnSave" onClick={del}>Delete</Link>
+                            <Link to="/review-list" class="btn btn-sm btn-primary" id="btnSave" onClick={del}>Delete</Link>
                         </button>
         </div>
         </div>

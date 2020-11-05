@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
@@ -127,7 +127,7 @@ export default function ReviewWrite() {
           variant="outlined"
           onChange= {e => setContent(e.target.value)}
           />
-          <Button
+          {/* <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -138,7 +138,13 @@ export default function ReviewWrite() {
             
           >
             등록
-          </Button>
+          </Button> */}
+                                  <button type="button">
+                                  <Link to="/review-list" class="btn btn-sm btn-primary" id="btnSave" onClick={write}>
+                                  등록
+                                  </Link>
+                                  </button>
+
           <Grid container>
           </Grid>
         </form>

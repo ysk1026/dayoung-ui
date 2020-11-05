@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -86,7 +86,7 @@ const revid = e => {
                 <TableCell>F</TableCell>
                 <TableCell align="right">
                     <button>
-                        <Link href="/edit-review" rev-id={i.rev_id} onClick={revid}>
+                        <Link to="/edit-review" rev-id={i.rev_id} onClick={revid}>
                             EDIT
                         </Link>
                     </button>
@@ -99,7 +99,7 @@ const revid = e => {
         <Link className = "writereview" color="primary" to="/write-review">
           리뷰 작성
         </Link>
-        <Link className = "writereview" color="primary" to="/reviewlist">
+        <Link className = "writereview" color="primary" to="/review-list">
           전체 리뷰 보기
         </Link>
       </div>
