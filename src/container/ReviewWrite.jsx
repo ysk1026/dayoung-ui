@@ -59,7 +59,7 @@ export default function ReviewWrite() {
   const movieId = data['movieid']
   const write = () => {
     alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
-    axios.post(`http://127.0.0.1:8080/api/reviewpost`,{'title':title, 'content': content, 'movie_id': movieId})
+    axios.post(`http://127.0.0.1:8080/api/review`,{'title':title, 'content': content, 'movie_id': movieId})
     .then(res => {
         alert(`WRITING SUCCESS`)
     })
@@ -80,7 +80,7 @@ export default function ReviewWrite() {
     try {
         const req = {
             method: c.get,
-            url: `${c.url}/api/moviesearch${title}`,
+            url: `${c.url}/api/recomoviesearch/${title}`,
             // data: {params: title},
             auth: c.auth
 

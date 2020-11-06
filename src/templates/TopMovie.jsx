@@ -20,10 +20,10 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Deposits() {
+export default function TopMovie() {
   const [data, setData] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8080/api/reviewpost')
+    axios.get('http://localhost:8080/api/reviewscore')
     .then (res => {
       // alert(res.data['Avengers'])
       const newarray = Object.keys(res.data)

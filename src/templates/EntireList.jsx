@@ -40,7 +40,7 @@ const fetchSomeReview = useCallback(async e=> {
   try {
       const req = {
           method: c.get,
-          url: `${c.url}/api/searchreview${title}`,
+          url: `${c.url}/api/reviewsearch${title}`,
           // data: {params: title},
           auth: c.auth
 

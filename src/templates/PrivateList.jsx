@@ -22,7 +22,7 @@ export default function PrivateReview() {
   const [data, setData] = useState([])
   const userId = localStorage.getItem('user_id')
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/reviewbyuser${userId}`)
+    axios.get(`http://localhost:8080/api/myreview${userId}`)
     .then(res=> {
       console.log('loaded')
       setData(res.data)
@@ -40,7 +40,7 @@ const fetchSomeReview = useCallback(async e=> {
   try {
       const req = {
           method: c.get,
-          url: `${c.url}/api/searchreview${title}`,
+          url: `${c.url}/api/reviewsearch${title}`,
           // data: {params: title},
           auth: c.auth
 
