@@ -56,10 +56,10 @@ export default function ReviewWrite() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const history = useHistory()
-  const movieId = data['movieid']
+  const movieId = data['mov_id']
   const write = () => {
     alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
-    axios.post(`http://127.0.0.1:8080/api/review`,{'title':title, 'content': content, 'movie_id': movieId})
+    axios.post(`http://127.0.0.1:8080/api/review`,{'title':title, 'content': content, 'mov_id': movieId})
     .then(res => {
         alert(`WRITING SUCCESS`)
     })
@@ -80,13 +80,13 @@ export default function ReviewWrite() {
     try {
         const req = {
             method: c.get,
-            url: `${c.url}/api/recomoviesearch/${title}`,
+            url: `${c.url}/api/movie-search/${title}`,
             // data: {params: title},
             auth: c.auth
 
         }
         const res = await axios(req)
-          // alert(res.data[0])
+          alert(res.data[0])
           setData(res.data[0])
           movieDiv.style.display = "Block"
     } catch (error){

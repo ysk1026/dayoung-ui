@@ -86,8 +86,8 @@ const userId = e => {
         <TableBody>
           {data.map((i, index) => (
             <TableRow key={index}>
-              <TableCell>{i.user_id}</TableCell>
-              <TableCell>{i.movie_id}</TableCell>
+              <TableCell>{i.usr_id}</TableCell>
+              <TableCell>{i.mov_id}</TableCell>
               <TableCell>{i.title}</TableCell>
               <TableCell>{i.content}</TableCell>
               <TableCell>*</TableCell>
