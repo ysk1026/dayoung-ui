@@ -56,7 +56,7 @@ const fetchSomeReview = useCallback(async e=> {
 const userId = e => {
   // const revId = e.target.getAttribute('rev-id')
   // console.log(revId)
-  localStorage.setItem("user_id", 'jason');
+  localStorage.setItem("user_id", '10');
   // alert()
 }
   return (

@@ -22,7 +22,7 @@ export default function PrivateReview() {
   const [data, setData] = useState([])
   const userId = localStorage.getItem('user_id')
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/myreview${userId}`)
+    axios.get(`http://localhost:8080/api/myreview/${userId}`)
     .then(res=> {
       console.log('loaded')
       setData(res.data)
@@ -80,8 +80,8 @@ const revid = e => {
         <TableBody>
           {data.map((i, index) => (
             <TableRow key={index}>
-                <TableCell>{i.user_id}</TableCell>
-                <TableCell>{i.movie_id}</TableCell>
+                <TableCell>{i.usr_id}</TableCell>
+                <TableCell>{i.mov_id}</TableCell>
                 <TableCell>{i.title}</TableCell>
                 <TableCell>F</TableCell>
                 <TableCell align="right">

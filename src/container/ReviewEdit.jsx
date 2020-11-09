@@ -57,7 +57,7 @@ export default function ReviewEdit() {
   
   useEffect(() => {
     alert("진입!")
-    axios.get(`http://localhost:8080/api/review${revId}`)
+    axios.get(`http://localhost:8080/api/review/${revId}`)
     .then(res => {
         setData(res.data)
         console.log(res.data)
@@ -70,7 +70,7 @@ export default function ReviewEdit() {
   const modify = () => {
     // alert(`Title: ${title}, UserId: ${userId}, Content: ${content}, ItemId: ${movieId}`)
     alert(`Title: ${title}, Content: ${content}`)
-    axios.put(`http://localhost:8080/api/review${revId}`,{'title':title, 'content': content})
+    axios.put(`http://localhost:8080/api/review/${revId}`,{'title':title, 'content': content})
     .then(res => {
         alert(`Update SUCCESS`)
     })
@@ -84,7 +84,7 @@ export default function ReviewEdit() {
 
 const del = () => {
     alert(`Review ID: ${revId}`)
-    axios.post(`http://localhost:8080/api/delreview${revId}`, {'rev_id' : revId})
+    axios.delete(`http://localhost:8080/api/review/${revId}`, {'rev_id' : revId})
     .then(res => {
         alert('Delete SUCCESS')
     })
