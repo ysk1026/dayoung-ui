@@ -55,21 +55,43 @@ export default function ReviewWrite() {
   // const [movieId, setMovieId] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+  const [emotion, setEmotion] = useState()
   const history = useHistory()
   const movieId = data['mov_id']
-  const write = () => {
-    alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
-    axios.post(`http://127.0.0.1:8080/api/review`,{'title':title, 'content': content, 'mov_id': movieId})
-    .then(res => {
-        alert(`WRITING SUCCESS`)
-    })
-    .catch(
-        e => {
-            alert(`Writing ${e}`)
-        }
-    )
+  // const write = () => {
+  //   alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
+  //   axios.post(`http://127.0.0.1:8080/api/review`,{'title':title, 'content': content, 'mov_id': movieId})
+  //   .then(res => {
+  //       alert(`WRITING SUCCESS`)
+  //   })
+  //   .catch(
+  //       e => {
+  //           alert(`Writing ${e}`)
+  //       }
+  //   )
 
-}
+// }
+  const write = useCallback(async e=> {
+    alert(`Title: ${title}, Content: ${content}, MovieId: ${movieId}`)
+    try {
+      const req = {
+          method: c.post,
+          url: `${c.url}/api/review`,
+          data: 
+            { 'title' : title,
+              'content' : content,
+              'mov_id' : movieId
+            },
+          auth: c.auth
+
+      }
+      const res = await axios(req)
+      alert(`WRITING SUCCESS`)
+      history.push('/review-list')
+  } catch (error){
+    alert(`Writing ${error}`)
+  }
+  })
 
   const fetchMovie = useCallback(async e=> {
     const movieDiv = document.querySelector('.movie_img')
@@ -86,7 +108,7 @@ export default function ReviewWrite() {
 
         }
         const res = await axios(req)
-          alert(res.data[0])
+          // alert(res.data[0])
           setData(res.data[0])
           movieDiv.style.display = "Block"
     } catch (error){
@@ -95,6 +117,31 @@ export default function ReviewWrite() {
     }
     
   },[])
+
+  const evaluate = useCallback(async e=> {
+    alert("리뷰 감정 분석을 시작합니다. Close 버튼을 누르고 잠시만 기다려주세요.")
+    const content = document.querySelector('#outlined-multiline-static').value
+    try {
+      const req = {
+          method: c.get,
+          url: `${c.url}/api/reviewemotion/${content}`,
+          // data: {params: title},
+          auth: c.auth
+
+      }
+      const res = await axios(req)
+        let score = res.data
+        if (score > 0.5) {
+          alert(`리뷰 내용: ${content}\n ${Math.round(score*100)}% 확률로 긍정 리뷰입니다!`)
+        } else {
+          alert(`리뷰 내용: ${content}\n ${Math.round((1 - score)*100)}% 확률로 부정 리뷰입니다.`)
+        }
+  } catch (error){
+      alert(`failure ${error}`)
+  }
+  
+  },[])
+
   const classes = useStyles();
   const movimg = data['image_naver']
   return (
@@ -165,6 +212,9 @@ export default function ReviewWrite() {
                                   <Link to="/review-list" class="btn btn-sm btn-primary" id="btnSave" onClick={write}>
                                   등록
                                   </Link>
+                                  </button>
+                                  <button type="button" class="btn btn-sm btn-primary" id="btnSave" onClick={evaluate}>
+                                  나의 리뷰 평가
                                   </button>
 
           <Grid container>
