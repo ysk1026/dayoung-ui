@@ -10,6 +10,7 @@ import Title from './Title';
 import axios from 'axios';
 import {context as c} from '../context'
 import './template.style.css'
+import {Emoji} from '../components'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -79,7 +80,7 @@ const userId = e => {
             <TableCell>영화</TableCell>
             <TableCell>리뷰 제목</TableCell>
             <TableCell>리뷰 내용</TableCell>
-            <TableCell>별점</TableCell>
+            <TableCell>평가</TableCell>
 
           </TableRow>
         </TableHead>
@@ -90,7 +91,7 @@ const userId = e => {
               <TableCell>{i.mov_id}</TableCell>
               <TableCell>{i.title}</TableCell>
               <TableCell>{i.content}</TableCell>
-              <TableCell>*</TableCell>
+              <TableCell>{((i.label == 1) ? <Emoji symbol="⭐️"/> : <Emoji symbol="❌"/>)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

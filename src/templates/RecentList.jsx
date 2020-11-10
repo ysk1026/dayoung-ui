@@ -10,7 +10,7 @@ import Title from './Title';
 import axios from 'axios';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import './template.style.css'
-
+import {Emoji} from '../components'
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
@@ -38,19 +38,19 @@ export default function RecentList() {
         <TableHead>
           <TableRow>
             
-            <TableCell>ID</TableCell>
+            {/* <TableCell>ID</TableCell> */}
             <TableCell>영화</TableCell>
             <TableCell>리뷰 제목</TableCell>
-            <TableCell align="right">별점</TableCell>
+            <TableCell align="right">평가</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((i, index) => (
             <TableRow key={index}>
-              <TableCell>{i.user_id}</TableCell>
+              {/* <TableCell>{i.user_id}</TableCell> */}
               <TableCell>{i.movie_id}</TableCell>
               <TableCell>{i.title}</TableCell>
-              <TableCell align="right">F</TableCell>
+              <TableCell align="right">{((i.label == 1) ? <Emoji symbol="⭐️"/> : <Emoji symbol="❌"/>)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
